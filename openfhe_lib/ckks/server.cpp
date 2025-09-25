@@ -93,7 +93,7 @@ void aggregator(std::vector< Ciphertext<DCRTPoly> >encrypted_weights, double n) 
         This function peform weights aggregation (federated learning concept)
     */
     auto sum = encrypted_weights[0];
-    for(int i=1; i<encrypted_weights.size(); ++i)
+    for(size_t i=1; i<encrypted_weights.size(); ++i)   // ponia int
         sum = CC->EvalAdd(sum, encrypted_weights[i]);
 
     auto result = CC->EvalMult(sum, 1.0/n);

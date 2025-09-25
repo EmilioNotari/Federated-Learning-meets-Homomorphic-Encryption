@@ -26,7 +26,10 @@ def decrypt_weights(cipher_file) -> list[float]:
         - cipher_file     : contain aggregated_weights compute using homomorphic operations by server
     """
     
+    # print(f"CIPHER_FILE {cipher_file}")
+    # print(f"CWD = {cwd}")
     stdout = subprocess.run([f"{cwd}/build/client", cipher_file], capture_output=True).stdout.decode()
+    # print(f"STDOUT = {stdout}")
     return [float(w) for w in stdout.split("@")]
 
 def aggregator():
